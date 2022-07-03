@@ -16,9 +16,9 @@ const renderCountry = function(data) {
 }
 
 const getCountryData = async function(location){
-    const request = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=277e160f5af509c9f6e384d7cbe3501c`)
+    const promise = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=277e160f5af509c9f6e384d7cbe3501c`)
 
-    const data = await request.json();
+    const [data] = await promise.json();
 
     renderCountry(data)
 }
@@ -26,11 +26,13 @@ const getCountryData = async function(location){
 
 
 
-elForm.addEventListener("submit", function(e) {
+elForm.addEventListener("change", function(e) {
     e.preventDefault()
 
     const inputValue = elInput.value;
     elInput.value = null
+
+    console.log(inputValue);
 
     getCountryData(inputValue)
 })

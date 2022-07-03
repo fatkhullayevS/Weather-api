@@ -26,13 +26,13 @@ const getCountryData = async function(location){
 
 
 
-elForm.addEventListener("change", function(e) {
+elForm.addEventListener("submit", function(e) {
     e.preventDefault()
 
     const inputValue = elInput.value;
     elInput.value = null
 
-    console.log(inputValue);
+
 
     getCountryData(inputValue)
 })
